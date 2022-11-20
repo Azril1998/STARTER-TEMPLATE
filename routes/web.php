@@ -98,3 +98,28 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
     ->name('admin.home')
     ->middleware('is_admin');
+
+// -- Pengolahan Data --
+//  Mengatur Route
+    Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
+    ->name('admin.books')
+    ->middleware('is_admin');
+
+//  Pengelolaan Buku
+    Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'submit_book'])
+    ->name('admin.book.submit')
+    ->middleware('is_admin');
+
+//  Mengatur Route
+    Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
+    ->name('admin.book.update')
+    ->middleware('is_admin');
+
+//  Mengatur AJAX
+    Route::patch('admin/ajaxadmin/databuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
+
+//  Menghapus Data
+    Route::post('admin/books/delete', [App\Http\Controllers\AdminController::class, 'delete_book'])
+    ->name('admin.book.delete')
+    ->middleware('is_admin');
+

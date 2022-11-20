@@ -293,6 +293,12 @@ return [
         'MAIN NAVIGATION',
         // Navbar items:
         [
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
+        [
             'text' => 'Blog',
             'url' => 'admin/blog',
             'can' => 'isUser',
