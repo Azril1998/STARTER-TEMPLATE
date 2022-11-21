@@ -7,29 +7,26 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\ValidationException;
 use App\Models\Book;
+use PDF;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
+    public function __construct(){
         $this->middleware('auth');
     }
 
-    public function index()
-    {
+    public function index(){
         $user = Auth::user();
         return view('home', compact('user'));
     }
 
-    public function books()
-    {
+    public function books(){
         $user = Auth::user();
         $books = Book::all();
         return view('book', compact('user', 'books'));
     }
 
-    public function submit_book(request $req)
-    {
+    public function submit_book(request $req){
         $validate = $req->validate([
             'judul' => 'required|max:255',
             'penulis' => 'required',
@@ -56,8 +53,7 @@ class AdminController extends Controller
         return redirect()->route('admin.books')->with($notification);
     }
 
-    public function update_book(request $req)
-    {
+    public function update_book(request $req){
         $book = Book::find($req->get('id'));
         $validate = $req->validate([
             'judul' => 'required|max:255',
@@ -83,8 +79,7 @@ class AdminController extends Controller
         return redirect()->route('admin.books')->with($notification);
     }
 
-    public function delete_book($id)
-    {
+    public function delete_book($id){
         $book = Book::find($id);
         Storage::delete('public/cover_buku/'.$book->cover);
         $book->delete();
@@ -102,5 +97,11 @@ class AdminController extends Controller
     {
         $buku = book::find($id);
         return response()->json($buku);
+    }
+
+    public function print_books(){
+        $books = Book::all();
+        $pdf = PDF::loadview('print_books', ['books'=> $books]);
+        return $pdf->download('data_buku.pdf');
     }
 }

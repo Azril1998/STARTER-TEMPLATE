@@ -110,7 +110,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     ->name('admin.book.submit')
     ->middleware('is_admin');
 
-//  Mengatur Route
     Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
     ->name('admin.book.update')
     ->middleware('is_admin');
@@ -121,5 +120,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //  Menghapus Data
     Route::post('admin/books/delete', [App\Http\Controllers\AdminController::class, 'delete_book'])
     ->name('admin.book.delete')
+    ->middleware('is_admin');
+
+//  Print To PDF
+    Route::get('admin/print_books', [App\Http\Controllers\AdminController::class, 'print_books'])
+    ->name('admin.print.books')
     ->middleware('is_admin');
 
