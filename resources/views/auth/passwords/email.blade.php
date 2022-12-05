@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 
 @section('content')
@@ -45,3 +46,6 @@
     </div>
 </div>
 @endsection
+=======
+@extends('adminlte::auth.passwords.email')
+>>>>>>> origin/modul6

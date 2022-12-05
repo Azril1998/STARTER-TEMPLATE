@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts.app')
 
 @section('content')
@@ -71,3 +72,6 @@
     </div>
 </div>
 @endsection
+=======
+@extends('adminlte::auth.login')
+>>>>>>> origin/modul6

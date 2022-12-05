@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+<<<<<<< HEAD
 class LoginController extends Controller
 {
     /*
@@ -19,6 +20,13 @@ class LoginController extends Controller
     |
     */
 
+=======
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class LoginController extends Controller
+{
+>>>>>>> origin/modul6
     use AuthenticatesUsers;
 
     /**
@@ -37,4 +45,24 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+<<<<<<< HEAD
+=======
+
+    public function login(Request $request)
+    {
+        $input = $request->all();
+        $this->validated($request, ['email' => 'required|email', 'password' => 'required',]);
+
+        if(auth()->attempt(array('email' =>$input['email'], 'password' => $input['password'])))
+        {
+            if (auth()->user()->roles_id == 1){
+                return redirect()->route('admin.home');
+            }else{
+                return redirect()->route('home');
+            }
+        }else{
+            return redirect()->route('login')->with('email', 'Email-Address And Password Are Wrong.');
+        }
+    }
+>>>>>>> origin/modul6
 }

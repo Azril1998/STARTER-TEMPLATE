@@ -4,7 +4,11 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+<<<<<<< HEAD
 class CreateFailedJobsTable extends Migration
+=======
+return new class extends Migration
+>>>>>>> origin/modul6
 {
     /**
      * Run the migrations.
@@ -33,4 +37,8 @@ class CreateFailedJobsTable extends Migration
     {
         Schema::dropIfExists('failed_jobs');
     }
+<<<<<<< HEAD
 }
+=======
+};
+>>>>>>> origin/modul6
