@@ -96,34 +96,35 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // -- Otentikasi --
 //  Pengaturan Route
     Route::get('admin/home', [App\Http\Controllers\AdminController::class, 'index'])
-    ->name('admin.home')
-    ->middleware('is_admin');
+    ->name('admin.home')->middleware('is_admin');
 
 // -- Pengolahan Data --
 //  Mengatur Route
     Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'books'])
-    ->name('admin.books')
-    ->middleware('is_admin');
+    ->name('admin.books')->middleware('is_admin');
 
 //  Pengelolaan Buku
     Route::get('admin/books', [App\Http\Controllers\AdminController::class, 'submit_book'])
-    ->name('admin.book.submit')
-    ->middleware('is_admin');
+    ->name('admin.book.submit')->middleware('is_admin');
 
     Route::patch('admin/books/update', [App\Http\Controllers\AdminController::class, 'update_book'])
-    ->name('admin.book.update')
-    ->middleware('is_admin');
+    ->name('admin.book.update')->middleware('is_admin');
 
 //  Mengatur AJAX
     Route::patch('admin/ajaxadmin/databuku/{id}', [App\Http\Controllers\AdminController::class, 'getDataBuku']);
 
 //  Menghapus Data
     Route::post('admin/books/delete', [App\Http\Controllers\AdminController::class, 'delete_book'])
-    ->name('admin.book.delete')
-    ->middleware('is_admin');
+    ->name('admin.book.delete')->middleware('is_admin');
 
 //  Print To PDF
     Route::get('admin/print_books', [App\Http\Controllers\AdminController::class, 'print_books'])
-    ->name('admin.print.books')
-    ->middleware('is_admin');
+    ->name('admin.print.books')->middleware('is_admin');
 
+//  Export Excel
+    Route::get('admin/books/export', [App\Http\Controllers\AdminController::class, 'export'])
+    ->name('admin.book.export')->middleware('is_admin');
+
+//  Import Excel
+    Route::get('admin/books/import', [App\Http\Controllers\AdminController::class, 'import'])
+    ->name('admin.book.import')->middleware('is_admin');

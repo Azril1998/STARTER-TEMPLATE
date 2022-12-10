@@ -93,6 +93,13 @@
 </div>
 </div>
 
+<div class="btn-group" role="group" aria-label="Basic example">
+    <a href="{{ route('admin.book.export') }}" class="btn btn-info" target="_blank">Export</a>
+    <a href="" class="btn btn-warning">Import</a>
+</div>
+</hr>
+<table id="table-data" class="table table-borderer">
+
 <div class="modal-fade" id="editBukuModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -102,6 +109,34 @@
                     <span aria-hidden="true">&times;</span>
                     </button>
             </div>
+
+<div class="modal fade" id="importDataModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Import Data</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+</div>
+<div class="modal-body">
+    <form method="post" action="{{ route('admin.book.import') }}" enctype="multipart/form-data">
+        @csrf
+        <div class="form-group">
+            <label for="cover">Upload file</label>
+            <input type="file" class="form-control" name="file"/>
+</div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+    <button type="submit" class="btn btn-primary">Import Data</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+@stop
+
 <div class="modal-body">
     <form method="post" action="{{ route('admin.book.update) }}" enctype="multipart/form-data">
         @csrf

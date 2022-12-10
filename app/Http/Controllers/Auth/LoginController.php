@@ -33,7 +33,7 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $input = $request->all();
-        $this->validated($request, ['email' => 'required|email', 'password' => 'required',]);
+        $this->validate($request, ['email' => 'required|email', 'password' => 'required',]);
 
         if(auth()->attempt(array('email' =>$input['email'], 'password' => $input['password'])))
         {
