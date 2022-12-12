@@ -13,38 +13,14 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'default' => env('FILESYSTEM_DRIVER', 'local'),
-=======
     'default' => env('FILESYSTEM_DISK', 'local'),
->>>>>>> origin/modul6
-
-    /*
-    |--------------------------------------------------------------------------
-    | Filesystem Disks
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure as many filesystem "disks" as you wish, and you
-    | may even configure multiple disks of the same driver. Defaults have
-<<<<<<< HEAD
-    | been setup for each driver as an example of the required options.
-=======
-    | been set up for each driver as an example of the required values.
->>>>>>> origin/modul6
-    |
-    | Supported Drivers: "local", "ftp", "sftp", "s3"
-    |
-    */
-
     'disks' => [
 
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
-<<<<<<< HEAD
-=======
             'throw' => false,
->>>>>>> origin/modul6
         ],
 
         'public' => [
@@ -52,10 +28,7 @@ return [
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
-<<<<<<< HEAD
-=======
             'throw' => false,
->>>>>>> origin/modul6
         ],
 
         's3' => [
@@ -67,10 +40,7 @@ return [
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
-<<<<<<< HEAD
-=======
             'throw' => false,
->>>>>>> origin/modul6
         ],
 
     ],

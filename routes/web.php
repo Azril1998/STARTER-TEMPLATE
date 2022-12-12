@@ -83,7 +83,7 @@ use Illuminate\Support\Facades\Route;
 // -- Blade --
 //  Template
     Route::get('/', function() {
-    return view('tryblade.child');
+    return view('welcome');
 });
 //  Menampilkan Data
     Route::get('greeting', function() {
@@ -127,3 +127,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     ->name('admin.print.books')
     ->middleware('is_admin');
 
+
+Auth::routes();
+
+Route::get('/home', function() {
+    return view('home');
+})->name('home')->middleware('auth');

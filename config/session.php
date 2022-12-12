@@ -71,12 +71,8 @@ return [
     | correspond to a connection in your database configuration options.
     |
     */
-
-<<<<<<< HEAD
     'connection' => env('SESSION_CONNECTION', null),
-=======
     'connection' => env('SESSION_CONNECTION'),
->>>>>>> origin/modul6
 
     /*
     |--------------------------------------------------------------------------
@@ -104,11 +100,8 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'store' => env('SESSION_STORE', null),
-=======
     'store' => env('SESSION_STORE'),
->>>>>>> origin/modul6
 
     /*
     |--------------------------------------------------------------------------
@@ -163,11 +156,8 @@ return [
     |
     */
 
-<<<<<<< HEAD
     'domain' => env('SESSION_DOMAIN', null),
-=======
     'domain' => env('SESSION_DOMAIN'),
->>>>>>> origin/modul6
 
     /*
     |--------------------------------------------------------------------------

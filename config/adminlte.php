@@ -290,25 +290,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
         // Navbar items:
-        [
-            'text' => 'Buku',
-            'url' => 'admin/books',
-            'icon' => 'fas fa-fw fa-book',
-            'can' => 'isAdmin',
-        ],
-        [
-            'text' => 'Blog',
-            'url' => 'admin/blog',
-            'can' => 'isUser',
-        ],
-        [
-            'text' => 'Pages',
-            'url' => 'admin/pages',
-            'icon' => 'fas fa-fw fa-file',
-            'can' => ['isUser', 'isAadmin'],
-        ],
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
@@ -330,6 +312,11 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text' => 'Buku',
+            'url'  => 'admin/books',
+            'can'  => 'isAdmin',
+        ],
+        [
             'text'        => 'pages',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
@@ -337,19 +324,6 @@ return [
             'label_color' => 'success',
         ],
         ['header' => 'account_settings'],
-        [
-            'text'  => 'Profile',
-            'route' => 'admin.profile',
-            'icon'  => 'fas fa-fw fa-user',
-            'can'   => 'isAdmin',
-        ],
-        [
-            'text'  => 'Change Password',
-            'route' => 'admin.password',
-            'text' => 'fas fa-fw fa-lock',
-            'can' => 'idAdmin',
-
-        ],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -452,7 +426,7 @@ return [
 
     'plugins' => [
         'Datatables' => [
-            'active' => true,
+            'active' => false,
             'files' => [
                 [
                     'type' => 'js',
