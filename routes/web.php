@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,9 +129,19 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
     ->name('admin.print.books')
     ->middleware('is_admin');
 
+//  Export/Import Excel
+    Route::get('admin/books/export', [App\Http\Controllers\AdminController::class, 'export'])
+    ->name('admin.book.export')->middleware('is_admin');
 
-Auth::routes();
+    Route::post('admin/books/import', [App\Http\Controllers\AdminController::class, 'import'])
+    ->name('admin.book.import')->middleware('is_admin');
 
-Route::get('/home', function() {
-    return view('home');
-})->name('home')->middleware('auth');
+//  Rest API
+    Route::middleware('auth:sanctum')->group(function()
+    {
+    Route::get('/books', [BookController::class, 'books']);
+    Route::post('/book/create', [BookController::class, 'create']);
+    Route::post('/book/update/{id}', [BookController::class, 'update']);
+    Route::post('/book/delete/{id}', [BookController::class, 'delete']);
+    });
+    route::post('/login', [AuthController::class, 'login']);

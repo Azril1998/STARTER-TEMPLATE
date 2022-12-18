@@ -291,6 +291,12 @@ return [
 
     'menu' => [
         // Navbar items:
+        'menu' => [
+            'text' => 'Buku',
+            'url' => 'admin/books',
+            'icon' => 'fas fa-fw fa-book',
+            'can' => 'isAdmin',
+        ],
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
@@ -310,11 +316,6 @@ return [
             'text' => 'blog',
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
-        ],
-        [
-            'text' => 'Buku',
-            'url'  => 'admin/books',
-            'can'  => 'isAdmin',
         ],
         [
             'text'        => 'pages',

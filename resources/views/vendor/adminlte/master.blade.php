@@ -105,76 +105,66 @@
     @endif
 
     {{-- Custom Scripts --}}
-    @yield('adminlte_js')
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
             showConfirmButton: false,
-            timer: 3000,
-        })
-
-        @if(Session::has('message'))
+            timer: 3000
+        });
+        @if (Session::has('message'))
             var type = "{{Session::get('alert-type')}}";
-
-            switch (type) {
-                case 'info' :
+            switch(type){
+                case 'info':
                     Toast.fire({
-                        type: 'info',
-                        title: "{{Session::get('message') }}"
+                        icon: 'info',
+                        title: "{{Session::get('message')}}"
                     })
+                break;
+                case 'success':
+                    Toast.fire({
+                            icon: 'success',
+                            title: "{{Session::get('message')}}"
+                        })
                     break;
-                    case 'success':
+                case 'warning':
+                    Toast.fire({
+                            icon: 'warning',
+                            title: "{{Session::get('message')}}"
+                        })
+                    break;
+                case 'error':
                         Toast.fire({
-                            type: 'success',
-                            title: "{{Session::get('message') }}"
+                            icon: 'error',
+                            title: "{{Session::get('message')}}"
                         })
                     break;
-                    case 'warning':
+                case 'dialog_error':
                         Toast.fire({
-                            type: 'warning',
-                            title: "{{Session::get('message') }}"
+                            icon: 'error',
+                            title: "Ooops",
+                            text: "{{Session::get('message')}}",
+                            timer:3000
                         })
                     break;
-                    case 'error':
-                        Toast.fire({
-                            type: 'error',
-                            title: "{{Session::get('message') }}"
-                        })
-                    break;
-                    case 'dialog_error':
-                        Swal.fire({
-                            type: 'error',
-                            title: 'Ooops',
-                            text: "{{Session::get('message') }}"
-                        })
-                        break;
             }
-            @endif
-
-            @if ($errors->any())
-            @foreach($errors->all() as $error)
+        @endif
+        @if($errors->any())
+            @foreach ($errors->all() as $error)
                 Swal.fire({
-                    type: 'error',
+                    type:'error',
                     title: 'Ooops',
-                    text: "{{ $error }}",
+                    text: "{{$error}}"
                 })
             @endforeach
-            @endif
-
-            @if ($errors->any())
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Ooops',
-                    text: "Terjadi suatu kesalahan",
-                })
-            @endif
-
-            $('#table-data').DataTable();
-            let baseurl = "<?=url('/')?>";
-            let fullURL = "<?=url()->full()?>";
+        @endif
+        
+        $('#tabel-data').DataTable();
+        let baseurl = '{{ url('/') }}';
+        let fullURL = '{{ url()->full() }}';
     </script>
+    @yield('adminlte_js')
 
 </body>
 
